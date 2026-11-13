@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Welcome to The Cozy Cup Café — freshly brewed coffee, delicious bites, and good moments.">
+  <title>The Cozy Cup Café</title>
+  <style>
+    :root {
+      --coffee: #4b2e24;
+      --coffee-dark: #2c1b16;
+      --cream: #fff8ef;
+      --tan: #e9d5bd;
+      --accent: #c47b45;
+      --ink: #30231e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: Georgia, 'Times New Roman', serif; color: var(--ink); background: var(--cream); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    .topbar { background: var(--coffee-dark); color: #fff8ef; text-align: center; padding: 8px 16px; font: 13px Arial, sans-serif; letter-spacing: .08em; }
+    header { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 18px 7%; background: rgba(255,248,239,.96); border-bottom: 1px solid #eadccc; }
+    .logo { color: var(--coffee); font-size: 25px; font-weight: bold; letter-spacing: -.04em; }
+    .logo span { color: var(--accent); }
+    nav { display: flex; gap: 26px; font: 14px Arial, sans-serif; }
+    nav a:hover { color: var(--accent); }
+    .hero { min-height: 590px; display: grid; grid-template-columns: 1.05fr .95fr; background: #ead8c4; }
+    .hero-copy { display: flex; flex-direction: column; justify-content: center; padding: 75px 10% 75px 14%; }
+    .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .2em; font: bold 12px Arial, sans-serif; margin-bottom: 18px; }
+    h1 { color: var(--coffee-dark); font-size: clamp(48px, 6vw, 76px); line-height: 1.03; font-weight: normal; margin-bottom: 22px; }
+    .hero-copy p { max-width: 470px; font: 17px/1.8 Arial, sans-serif; color: #5d4a40; margin-bottom: 30px; }
+    .button { display: inline-block; width: fit-content; background: var(--coffee); color: white; padding: 14px 25px; border-radius: 3px; font: bold 13px Arial, sans-serif; letter-spacing: .06em; transition: .2s; }
+    .button:hover { background: var(--accent); transform: translateY(-2px); }
+    .hero-image { min-height: 420px; background: linear-gradient(0deg,rgba(30,15,8,.12),rgba(30,15,8,.12)), url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1400&q=85') center/cover; }
+    section { padding: 85px 8%; }
+    .section-heading { text-align: center; max-width: 650px; margin: 0 auto 45px; }
+    .section-heading h2 { color: var(--coffee); font-size: clamp(34px, 4vw, 48px); font-weight: normal; margin-bottom: 12px; }
+    .section-heading p { color: #76665c; font: 15px/1.8 Arial, sans-serif; }
+    .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; max-width: 1100px; margin: auto; }
+    .menu-card { background: white; padding: 28px; border: 1px solid #eee1d4; }
+    .menu-card h3 { color: var(--coffee); font-size: 23px; font-weight: normal; margin-bottom: 8px; }
+    .menu-card p { color: #76665c; font: 14px/1.7 Arial, sans-serif; min-height: 48px; }
+    .price { display: block; color: var(--accent); font: bold 16px Arial, sans-serif; margin-top: 17px; }
+    .about { background: #f0e4d7; display: grid; grid-template-columns: 1fr 1fr; gap: 7%; align-items: center; }
+    .about-image { min-height: 390px; background: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=85') center/cover; }
+    .about-copy h2 { color: var(--coffee); font-size: clamp(34px, 4vw, 48px); font-weight: normal; line-height: 1.1; margin-bottom: 20px; }
+    .about-copy p { color: #66564c; font: 15px/1.9 Arial, sans-serif; margin-bottom: 16px; }
+    .feedback { background: #f0e4d7; }
+    .feedback-form { max-width: 680px; margin: 0 auto; background: #fff; padding: 32px; border: 1px solid #eadccc; }
+    .feedback-form label { display: block; color: var(--coffee); font: bold 14px Arial, sans-serif; margin: 0 0 8px; }
+    .feedback-form input, .feedback-form select, .feedback-form textarea {
+      width: 100%; padding: 13px 14px; margin-bottom: 20px; border: 1px solid #d9c8b8;
+      border-radius: 3px; background: #fffdfa; color: var(--ink); font: 14px Arial, sans-serif;
+    }
+    .feedback-form textarea { min-height: 130px; resize: vertical; }
+    .feedback-form input:focus, .feedback-form select:focus, .feedback-form textarea:focus {
+      outline: 2px solid var(--accent); outline-offset: 1px;
+    }
+    .feedback-message { margin-top: 15px; color: #356b3b; font: 14px Arial, sans-serif; }
+    .visit { text-align: center; }
+    .visit-grid { max-width: 900px; margin: 35px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+    .visit-grid h3 { color: var(--coffee); font-size: 20px; font-weight: normal; margin-bottom: 8px; }
+    .visit-grid p { color: #76665c; font: 14px/1.8 Arial, sans-serif; }
+    footer { background: var(--coffee-dark); color: #f9eee3; text-align: center; padding: 30px 20px; font: 13px Arial, sans-serif; }
+    footer p + p { margin-top: 6px; color: #cbb8a9; }
+    @media (max-width: 760px) {
+      header { flex-direction: column; padding: 15px 5%; }
+      nav { gap: 16px; flex-wrap: wrap; justify-content: center; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-copy { padding: 65px 8%; }
+      .hero-image { min-height: 330px; }
+      .menu-grid, .visit-grid { grid-template-columns: 1fr; }
+      section { padding: 65px 7%; }
+      .about { grid-template-columns: 1fr; }
+      .about-image { min-height: 280px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">FRESH COFFEE · FRESHLY MADE · ALWAYS WELCOME</div>
+  <header>
+    <a class="logo" href="#home">The Cozy <span>Cup.</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#menu">Menu</a>
+      <a href="#about">Our Story</a>
+      <a href="#feedback">Feedback</a>
+      <a href="#visit">Visit Us</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home" style="padding:0">
+      <div class="hero-copy">
+        <div class="eyebrow">Your neighbourhood café</div>
+        <h1>Good coffee.<br>Good company.</h1>
+        <p>Take a little pause from the busy day. Enjoy freshly brewed coffee, delicious treats, and a cosy place to call your own.</p>
+        <a class="button" href="#menu">EXPLORE OUR MENU</a>
+      </div>
+      <div class="hero-image" role="img" aria-label="Freshly brewed coffee in a warm café"></div>
+    </section>
+
+    <section id="menu">
+      <div class="section-heading">
+        <div class="eyebrow">Made with love</div>
+        <h2>A little something for everyone</h2>
+        <p>Simple favourites, carefully prepared. Here are a few highlights from our café menu.</p>
+      </div>
+      <div class="menu-grid">
+        <article class="menu-card">
+          <h3>Classic Cappuccino</h3>
+          <p>Rich espresso topped with silky steamed milk and a soft layer of foam.</p>
+          <span class="price">₹160</span>
+        </article>
+        <article class="menu-card">
+          <h3> Iced Latte</h3>
+          <p>Chilled espresso and creamy milk over ice — a refreshing pick-me-up.</p>
+          <span class="price">₹180</span>
+        </article>
+        <article class="menu-card">
+          <h3>Chocolate Brownie</h3>
+          <p>A rich, fudgy chocolate treat that pairs perfectly with your coffee.</p>
+          <span class="price">₹140</span>
+        </article>
+        <article class="menu-card">
+          <h3>Masala Chai</h3>
+          <p>Comfort in a cup, brewed with tea, milk, and warming Indian spices.</p>
+          <span class="price">₹90</span>
+        </article>
+        <article class="menu-card">
+          <h3>Grilled Sandwich</h3>
+          <p>Toasted golden with a delicious, savoury filling and fresh ingredients.</p>
+          <span class="price">₹190</span>
+        </article>
+        <article class="menu-card">
+          <h3>Fresh Croissant</h3>
+          <p>Flaky, buttery layers baked until golden and crisp.</p>
+          <span class="price">₹130</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about-image" role="img" aria-label="Cosy café interior"></div>
+      <div class="about-copy">
+        <div class="eyebrow">A place to slow down</div>
+        <h2>More than just a cup of coffee.</h2>
+        <p>At The Cozy Cup, we believe the best moments are often the simplest: a warm drink, a tasty bite, and a good conversation.</p>
+        <p>Whether you're catching up with friends, getting some work done, or enjoying a quiet moment, there's always a seat waiting for you.</p>
+        <a class="button" href="#visit">COME SAY HELLO</a>
+      </div>
+    </section>
+
+    <section class="feedback" id="feedback">
+      <div class="section-heading">
+        <div class="eyebrow">Your thoughts matter</div>
+        <h2>Share your experience</h2>
+        <p>We'd love to hear what you enjoyed and how we can make your next visit even better.</p>
+      </div>
+      <form class="feedback-form" id="feedbackForm">
+        <label for="customerName">Your name</label>
+        <input type="text" id="customerName" name="customerName" placeholder="Enter your name" required>
+
+        <label for="customerEmail">Email address (optional)</label>
+        <input type="email" id="customerEmail" name="customerEmail" placeholder="you@example.com">
+
+        <label for="rating">How was your experience?</label>
+        <select id="rating" name="rating" required>
+          <option value="">Choose a rating</option>
+          <option value="5 - Excellent">★★★★★ - Excellent</option>
+          <option value="4 - Very good">★★★★ - Very good</option>
+          <option value="3 - Good">★★★ - Good</option>
+          <option value="2 - Could be better">★★ - Could be better</option>
+          <option value="1 - Poor">★ - Poor</option>
+        </select>
+
+        <label for="customerFeedback">Your feedback</label>
+        <textarea id="customerFeedback" name="customerFeedback" placeholder="Write your feedback or suggestions here..." required></textarea>
+
+        <button class="button" type="submit">SUBMIT FEEDBACK</button>
+        <p class="feedback-message" id="feedbackMessage" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="visit" id="visit">
+      <div class="section-heading">
+        <div class="eyebrow">We'd love to see you</div>
+        <h2>Come on in</h2>
+        <p>Drop by for your daily coffee or make us your new favourite meeting spot.</p>
+      </div>
+      <div class="visit-grid">
+        <div>
+          <h3>Find Us</h3>
+          <p>Your café address goes here<br>Your City, India</p>
+        </div>
+        <div>
+          <h3>Opening Hours</h3>
+          <p>Monday – Sunday<br>9:00 AM – 10:00 PM</p>
+        </div>
+        <div>
+          <h3>Get in Touch</h3>
+          <p>+91 98765 43210<br>hello@thecozycup.com</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Front-end demo: this confirms submission in the browser.
+    // Connect a form service or backend to collect and store customer feedback.
+    document.getElementById('feedbackForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      document.getElementById('feedbackMessage').textContent =
+        'Thank you for sharing your feedback! We appreciate your visit.';
+      this.reset();
+    });
+  </script>
+
+  <footer>
+    <p>© 2026 The Cozy Cup Café. All rights reserved.</p>
+    <p>Made for coffee lovers, with love.</p>
+  </footer>
+</body>
+</html>
